@@ -17,7 +17,7 @@ describe("Cart", () => {
 
 	describe("getTotal()", () => {
 		it("should return 0 when getTotal() is executed in a newly created instance", () => {
-			expect(cart.getTotal()).toEqual(0);
+			expect(cart.getTotal().getAmount()).toEqual(0);
 		});
 
 		it("should mutiply quantity and price and receive the total amount", () => {
@@ -26,7 +26,7 @@ describe("Cart", () => {
 				quantity: 2,
 			});
 
-			expect(cart.getTotal()).toEqual(70776);
+			expect(cart.getTotal().getAmount()).toEqual(70776);
 		});
 
 		it("should ensure no more than on product exists at a time", () => {
@@ -40,7 +40,7 @@ describe("Cart", () => {
 				quantity: 1,
 			});
 
-			expect(cart.getTotal()).toEqual(35388);
+			expect(cart.getTotal().getAmount()).toEqual(35388);
 		});
 
 		it("should update total when a product gets included and the remove", () => {
@@ -56,7 +56,7 @@ describe("Cart", () => {
 
 			cart.remove(product);
 
-			expect(cart.getTotal()).toEqual(41872);
+			expect(cart.getTotal().getAmount()).toEqual(41872);
 		});
 	});
 
@@ -103,7 +103,7 @@ describe("Cart", () => {
 
 			cart.checkout();
 
-			expect(cart.getTotal()).toEqual(0);
+			expect(cart.getTotal().getAmount()).toEqual(0);
 		});
 	});
 
