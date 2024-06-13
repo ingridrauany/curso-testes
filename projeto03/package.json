@@ -8,10 +8,15 @@
 		"start": "next start",
 		"lint": "next lint",
 		"test": "jest",
+		"test:unit": "jest --config=jest-unit.config.js",
+		"test:integration": "jest --config=jest-integration.config.js",
 		"test:watch": "jest --watchAll",
+		"test:unit:watch": "jest --config=jest-unit.config.js --watchAll",
+		"test:integration:watch": "jest --config=jest-integration.config.js --watchAll",
 		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
+		"axios": "^1.7.2",
 		"next": "14.2.3",
 		"react": "^18",
 		"react-dom": "^18"
@@ -28,6 +33,7 @@
 		"eslint-config-next": "14.2.3",
 		"jest": "^29.7.0",
 		"jest-environment-jsdom": "^29.7.0",
+		"miragejs": "^0.1.48",
 		"postcss": "^8",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5"
