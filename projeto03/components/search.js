@@ -2,10 +2,21 @@ import { useState } from "react";
 
 export default function Search({ doSearch }) {
 	const [term, setTerm] = useState("");
+	const submitHandler = (e) => {
+		e.preventDefault();
+		doSearch(term);
+	};
+
+	const inputHandler = (e) => {
+		setTerm(e.target.value);
+		if (e.target.value === "") {
+			doSearch("");
+		}
+	};
 
 	return (
 		<form
-			onSubmit={() => doSearch(term)}
+			onSubmit={submitHandler}
 			name="search-form"
 			className="relative mt-6 max-w-lg mx-auto"
 		>
@@ -31,6 +42,7 @@ export default function Search({ doSearch }) {
 				placeholder="Search"
 				value={term}
 				onChange={(e) => setTerm(e.target.value)}
+				onInput={inputHandler}
 			/>
 		</form>
 	);

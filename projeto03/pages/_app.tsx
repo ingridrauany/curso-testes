@@ -2,6 +2,10 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Cart from "../components/cart";
 
+if (process.env.NODE_ENV === "development") {
+	require("../miragejs/server").makeServer();
+}
+
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<div className="bg-white">
