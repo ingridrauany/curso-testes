@@ -2,7 +2,8 @@
 
 1. [Projeto 01](projeto01/): Criando funções básicas para utilizar o Jest para escrever testes com TDD
 2. [Projeto 02](projeto02/): Cria um sistema de carrinho e testes para esse sistema
-3. [Projeto 03](projeto02/): Escrita de testes para uma aplicação React/Nextjs
+3. [Projeto 03](projeto03/): Escrita de testes para uma aplicação React/Nextjs
+4. [Projeto 03](projeto04/): Escrita de testes para uma aplicação Vue/Nuxtjs
 
 ## Ferramentas
 
