@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useCartStore } from "../store/cart/index";
 
 export default function CartItem({ product }) {
-	const [quantity, setQuantity] = useState(1);
+	const { remove, increase, decrease } = useCartStore(
+		(store) => store.actions
+	);
 
 	return (
 		<div className="flex justify-between mt-6" data-testid="cart-item">
@@ -14,35 +16,13 @@ export default function CartItem({ product }) {
 				/>
 				<div className="mx-3">
 					<h3 className="text-sm text-gray-600">{product.title}</h3>
+					<button onClick={remove(product)}>remove</button>
 					<div className="flex items-center mt-2">
 						<button
 							className="text-gray-500 focus:outline-none focus:text-gray-600"
-							onClick={() =>
-								setQuantity(quantity > 0 ? quantity - 1 : 0)
-							}
-							disabled={quantity == 0}
-						>
-							<svg
-								className="h-5 w-5"
-								fill="none"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-							</svg>
-						</button>
-						<span
-							data-testid="quantity"
-							className="text-gray-700 mx-2"
-						>
-							{quantity}
-						</span>
-						<button
-							className="text-gray-500 focus:outline-none focus:text-gray-600"
-							onClick={() => setQuantity(quantity + 1)}
+							onClick={() => decrease(product)}
+							disabled={product.quantity == 0}
+							data-testid="decrease-button"
 						>
 							<svg
 								className="h-5 w-5"
@@ -54,6 +34,30 @@ export default function CartItem({ product }) {
 								stroke="currentColor"
 							>
 								<path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+							</svg>
+						</button>
+						<span
+							data-testid="quantity"
+							className="text-gray-700 mx-2"
+						>
+							{product.quantity}
+						</span>
+						<button
+							className="text-gray-500 focus:outline-none focus:text-gray-600"
+							onClick={() => increase(product)}
+							data-testid="increase-button"
+						>
+							<svg
+								className="h-5 w-5"
+								fill="none"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+								s
 							</svg>
 						</button>
 					</div>

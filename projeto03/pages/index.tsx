@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import ProductCard from "../components/product-card";
 import Search from "../components/search";
 import { useFetchProducts } from "../hooks/useFetchProducts";
+import { useCartStore } from "../store/cart/index";
 
 export default function ProductList() {
 	const { products, error } = useFetchProducts();
 	const [term, setTerm] = useState("");
 	const [localProducts, setLocalProducts] = useState([]);
+	const addToCart = useCartStore((store) => store.actions.add);
 
 	useEffect(() => {
 		if (term === "") {
@@ -40,7 +42,7 @@ export default function ProductList() {
 					{localProducts.map((product, index) => (
 						<ProductCard
 							product={product}
-							addToCart={{}}
+							addToCart={addToCart}
 							key={product.id}
 						/>
 					))}
