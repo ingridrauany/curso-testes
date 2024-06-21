@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Relógio",
+    "price": "20.20"
+  },
+  {
+    "id": 2,
+    "title": "Relógio 1",
+    "price": "22.22"
+  },
+  {
+    "id": 3,
+    "title": "Relógio 2",
+    "price": "25.25"
+  },
+  {
+    "id": 4,
+    "title": "Relógio 3",
+    "price": "24.25"
+  }
+]
