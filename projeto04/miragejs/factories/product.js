@@ -10,8 +10,14 @@ import { faker } from '@faker-js/faker';
 
 export default {
   product: Factory.extend({
-    title: faker.lorem.words(),
-    price: faker.commerce.price(),
-    image: faker.image.urlLoremFlickr(),
+    title() {
+      return faker.lorem.words();
+    },
+    price() {
+      return faker.commerce.price();
+    },
+    image() {
+      return faker.image.urlLoremFlickr();
+    },
   }),
 };
