@@ -16,7 +16,7 @@ describe('Search', () => {
 
     expect(wrapper.emitted().doSearch).toBeTruthy()
     expect(wrapper.emitted().doSearch.length).toBe(1)
-    expect(wrapper.emitted().doSearch[0]).toEqual([{ searchTerm }])
+    expect(wrapper.emitted().doSearch[0]).toEqual([{ term: searchTerm }])
   })
 
   it('should trigger search event when search input is cleared', async () => {
@@ -29,6 +29,6 @@ describe('Search', () => {
 
     expect(wrapper.emitted().doSearch).toBeTruthy()
     expect(wrapper.emitted().doSearch.length).toBe(1)
-    expect(wrapper.emitted().doSearch[0]).toEqual([{ searchTerm: '' }])
+    expect(wrapper.emitted().doSearch[0]).toEqual([{ term: '' }])
   })
 })

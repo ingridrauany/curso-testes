@@ -13,7 +13,7 @@
     </span>
 
     <input
-      v-model="searchTerm"
+      v-model="term"
       class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
       type="search"
       placeholder="Search"
@@ -23,22 +23,23 @@
 
 <script>
 export default {
-  name: 'SearchBar',
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Search',
   data() {
     return {
-      searchTerm: '',
+      term: '',
     }
   },
   watch: {
-    searchTerm() {
-      if (this.searchTerm === '') {
+    term() {
+      if (this.term === '') {
         this.doSearch()
       }
     },
   },
   methods: {
     doSearch(term) {
-      this.$emit('doSearch', { searchTerm: this.searchTerm })
+      this.$emit('doSearch', { term: this.term })
     },
   },
 }
