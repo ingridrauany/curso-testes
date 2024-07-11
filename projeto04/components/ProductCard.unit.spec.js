@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import ProductCard from '@/components/ProductCard'
 import { makeServer } from '@/miragejs/server'
+import { CartManager } from '@/managers/CartManager'
 
 describe('ProductCard', () => {
   let server
@@ -20,15 +21,20 @@ describe('ProductCard', () => {
       image:
         'https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
     })
+    const cartManager = new CartManager()
     const wrapper = mount(ProductCard, {
       propsData: {
         product,
+      },
+      mocks: {
+        $cart: cartManager,
       },
     })
 
     return {
       wrapper,
       product,
+      cartManager,
     }
   }
 
@@ -40,13 +46,15 @@ describe('ProductCard', () => {
     expect(wrapper.text()).toContain('$23.00')
   })
 
-  it('should emit the event addToCart with product object when button gets clicked', async () => {
-    const { wrapper, product } = mounProductCard()
+  it('should add item to cart on buttonClick', async () => {
+    const { wrapper, cartManager, product } = mounProductCard()
+    const spy = jest.spyOn(cartManager, 'open')
+    const spyProduct = jest.spyOn(cartManager, 'addProduct')
 
     await wrapper.find('button').trigger('click')
 
-    expect(wrapper.emitted().addToCart).toBeTruthy()
-    expect(wrapper.emitted().addToCart.length).toBe(1)
-    expect(wrapper.emitted().addToCart[0]).toEqual([{ product }])
+    expect(spy).toHaveBeenCalledTimes(1)
+    expect(spyProduct).toHaveBeenCalledTimes(1)
+    expect(spyProduct).toHaveBeenCalledWith(product)
   })
 })

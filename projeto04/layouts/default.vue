@@ -34,6 +34,7 @@
             <button
               class="text-gray-600 focus:outline-none mx-4 sm:mx-0"
               @click="toggleCart"
+              data-testid="toggle-button"
             >
               <svg
                 class="h-5 w-5"
@@ -97,7 +98,11 @@
         </nav>
       </div>
     </header>
-    <Cart :isOpen="isCartOpen" @close="toggleCart" />
+    <Cart
+      :products="$cart.getState().items"
+      :isOpen="$cart.getState().open"
+      @close="toggleCart"
+    />
     <nuxt />
     <footer class="bg-gray-200">
       <div
@@ -114,16 +119,24 @@
 
 <script>
 import Cart from '@/components/Cart'
+
 export default {
   components: { Cart },
-  data() {
-    return {
-      isCartOpen: false,
-    }
+  computed: {
+    isCartOpen() {
+      return this.$cart.getState().open
+    },
+    products() {
+      return this.$cart.getState().items
+    },
   },
   methods: {
     toggleCart() {
-      this.isCartOpen = !this.isCartOpen
+      if (this.$cart.getState().open) {
+        this.$cart.close()
+      } else {
+        this.$cart.open()
+      }
     },
   },
 }
