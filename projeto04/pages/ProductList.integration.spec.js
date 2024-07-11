@@ -110,4 +110,12 @@ describe('ProductList', () => {
     expect(wrapper.vm.searchTerm).toEqual('relógio')
     expect(cards).toHaveLength(2)
   })
+
+  it('it should display the total quantity of products', async () => {
+    const { wrapper } = await mountProductList(27)
+
+    const label = wrapper.find('[data-testid="total-quantity-label"]')
+
+    expect(label.text()).toEqual('27 Product(s)')
+  })
 })
