@@ -4,6 +4,7 @@
 2. [Projeto 02](projeto02/): Cria um sistema de carrinho e testes para esse sistema
 3. [Projeto 03](projeto03/): Escrita de testes para uma aplicação React/Nextjs
 4. [Projeto 04](projeto04/): Escrita de testes para uma aplicação Vue/Nuxtjs
+5. [Projeto 04](projeto05/): Escrita de testes para uma aplicação Nodejs
 
 ## Ferramentas
 
