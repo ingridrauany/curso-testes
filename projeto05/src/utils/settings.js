@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+// eslint-disable-next-line import/newline-after-import
 import dotenv from 'dotenv';
 dotenv.config();
 
