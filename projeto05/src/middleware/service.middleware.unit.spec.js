@@ -1,7 +1,7 @@
 import { get } from './service.middleware';
 
 describe('Middleware > Service', () => {
-  beforeEach(() => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 

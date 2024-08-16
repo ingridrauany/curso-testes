@@ -6,7 +6,7 @@ import { get } from './user.middleware';
 jest.mock('@/database/service');
 
 describe('Middleware > Users', () => {
-  beforeEach(() => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 
